@@ -4,7 +4,7 @@ import numpy as np
 image = cv2.imread('img_tarea.png')
 output = image.copy()
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-cv2.imshow("IMAGEN", image)
+cv2.imshow("IMG", image)
 
 circulos = cv2.HoughCircles(gray, cv2.HOUGH_GRADIENT, 1.2, 100)
 
@@ -16,6 +16,6 @@ if circulos is not None:
 
 	cv2.imshow("SALIDA", output)
 	cv2.waitKey(0)
-	
+
 cv2.waitKey(0)
 cv2.destroyAllWindows()
