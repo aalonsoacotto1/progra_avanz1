@@ -1,0 +1,28 @@
+Tienda en linea
+
+Minimo 2 o 3 productos de alguna linea en particular con precios: (con imágenes)
+	- Maquillaje
+	- Sodas
+	- Cheve
+	- Movies/Series
+
+Input para ingresar un monto a pagar
+
+Botón de comprar
+
+Alert/confirm, investigar(modal en bootstrap)
+
+Funcionalidad:
+- Servidor en Flask
+- Enviar un archivo html (ruta a elegir por el equipo) (localhost:5000/)
+- Crear una ruta donde se muestre de una manera creativa(*) los integrantes del equipo: (localhost:5000/integrantes) (Requisito para calificación)
+- Usar javascript/JQuery para validar que el monto ingresado sea mayor o igual al precio del producto, si no, mostrar al usuario (con alert, modal, notify, etc) que no alcanza para comprar el producto
+- Cuando selecciones comprar, y SI ALCANCE con el monto ingresado, hay que mostrar al usuario (alert, modal, notify, etc) que la compra ha sido exitosa, y hay que hacer reset al campo de monto a ingresar.
+
+
+Modalidad Examen:
+- Equipos (formados)
+- Fecha de entrega: Miércoles 10 a mediodía (como límite)
+- No entregar nada escrito
+- Enviar carpeta comprimida a mi correo: alvaro.moreno@cetys.mx
+  

@@ -1,0 +1,7 @@
+ALTER TABLE `e0002`.`deptos` 
+ADD COLUMN `id_sucursal` INT NULL AFTER `tipo_asist`;
+
+
+ALTER TABLE `quimical_pruebas`.`asist_lista` 
+ADD COLUMN `firma_nombre` VARCHAR(100) NULL AFTER `hrs_ext`;
+

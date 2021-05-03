@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Clase Bootstrap</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
+	<style type="text/css">
+		.container {
+			max-width: 25% !important;
+			margin-top: 20px;
+		}
+		#boton_tomar {
+			float: right;
+		}
+	</style>
+	
+</head>
+<body>
+
+	<div class="container">
+		<h2>FORMULARIO</h2>
+		<hr>
+		<label>Nombre:</label>
+		<input id="nombre" type="text" class="form-control" name=""> <br>
+		<label>Edad:</label>
+		<input id="edad" type="number" class="form-control" name=""> <br>
+		<label>Nacionalidad:</label>
+		<select class="form-control" id="nacionalidad">
+			<option>Selecciona una nacionalidad...</option>
+			<option value="mexicano">Mexicano</option>
+			<option value="estadounidense">Estadounidense</option>
+		</select>
+		<hr>
+		<button id="boton_tomar" class="btn bg-dark text-white">¿Tomar?</button>
+	</div>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+
+			//FORMULARIO: nombre, edad, nacionalidad, boton (tomar)
+			// nombre tiene que existir (es decir que no esté vacio)
+			// edad: si es mayor de edad le tenemos que decir que puede tomar, si no, que no puede tomar
+			// nacionalidad [mexicano, estadounidense]
+			// mexicano -> mayor de edad : 18 y mayores
+			// estadounidense -> mayor edad: 21 para arriba
+			// En mi alert me debe concatenar: "Hola! [nombre], puedes tomar!" --- "Lo siento! [nombre], no puedes tomar!"
+
+
+			$("#boton_tomar").click(function(){
+				var nombre = $("#nombre").val(); //document.getElementById("#nombre").value
+				var edad = Number($("#edad").val());
+				var nacionalidad = $("#nacionalidad").val();
+				//console.log("Nombre: " + nombre);
+				//console.log("Edad: " + edad);
+				//console.log("Nacionalidad: " + nacionalidad);
+				var mayor_de_edad = 0;
+				if(nacionalidad == "mexicano") {
+					mayor_de_edad = 18;
+				}
+				else {
+					mayor_de_edad = 21;
+				}
+
+				if(edad >= mayor_de_edad) { // si puedo tomar
+					alert("Hola! " + nombre + ", Si puedes tomar!");
+				}
+				else { // no puedo tomar
+					alert("Lo siento! " + nombre + ", No puedes tomar!");
+				}
+				
+				location.reload();
+			});	
+		});
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Examen</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
+	<style type="text/css">
+		.container {
+			max-width: 25% !important;
+			margin-top: 20px;
+		}
+		#boton_comprar {
+			float: right;
+		}
+	</style>
+	
+</head>
+<body>
+
+	<div class="container">
+		<h2>Tienda</h2>
+		<hr>
+		<label>Dinero:</label>
+		<input id="dinero" type="number" class="form-control" name="" min="0"> <br>
+		<label>Prodcutos:</label>
+		<select class="form-control" id="productos">
+			<option>Selecciona un producto</option>
+			<option value="Switch">Switch</option>
+			<option value="Playstation5">Playstation 5</option>
+            <option value="Xbox">Xbox Series X</option>
+		</select>
+		<hr>
+		<button id="boton_comprar" class="btn bg-dark text-white">comprar</button>
+        <img src ="static/img/play5.png" width="100" height="100"> <br><br>
+        <p>$15000</p>
+        <hr>
+        <img src ="static/img/Xbox.png" width="100" height="100"> <br><br>
+        <p>$13000</p>
+        <hr>
+        <img src ="static/img/Switch.png" width="100" height="100"> <br><br>
+        <p>$10000</p>
+        <hr>
+	</div>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#boton_comprar").click(function(){
+				var Dinero = Number($("#dinero").val());
+				var producto = $("#productos").val();
+                var Switch= $("#Switch").val();
+                var Play= $("#Playstation5").val();
+                var Xbox= $("#Xbox").val();
+                var precio = 0;
+				if(producto == "Switch" ) {
+                    precio = 10000;
+				}
+                else if(producto == "Play"){
+                    precio = 15000;
+                }
+                else{
+                    precio = 13000;
+                } 
+                if (Dinero >= precio){
+                    alert("Compra exitosa");
+                }
+                else {
+                    alert("No te alcanza");
+                }
+				location.reload();
+			});	
+		});
+	</script>
+</body>
+</html>
