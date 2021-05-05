@@ -32,10 +32,10 @@ paloma = Animal("paloma", "KFC")
 orni = Ornitorrinco("perry")
 
 
-def conteo(num):
-	if num<10:
-		print(num)
-		num += 1
-		conteo(num)
+num1 = "20"
 
-conteo(0)
+num2 = "7"
+
+resultado = num1+num2
+
+print(resultado)
