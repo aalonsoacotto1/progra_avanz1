@@ -20,6 +20,7 @@ for i in range(n):
 	años = int(input("A cuantos años será tu inversión: "))
 	inversion = interesCompuesto(dinero, tasa, años)
 	print(inversion)
+	print("Hola mundo")
 
 ### EJERCICIO (Funciones)
 # Somos una caja registradora...
