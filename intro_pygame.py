@@ -28,6 +28,7 @@ x_coord = 10
 y_coord = 120
 des_x = 0
 des_y = 0
+score = 0
 
 # GENERAL
 vel = 2
@@ -36,9 +37,27 @@ vel = 2
 x_opo = 380
 y_opo = 120
 des_y_opo = 0
+score_opo = 0
+
+#pelota
+x_pelota = 200
+y_pelota = 150
+vel_pelota = 2
+direccion_x = 1 # si es positivo es derecha, negativo izquierda
+direccion_y = 1 # si es positivo es abajo, negativo arriba
+'''
+	direccion_x		direccion_y
+		1				1			abajo-derecha
+		1				-1			arriba-derecha
+		-1				1			abajo-izquierda
+		-1				-1			arriba-izquierda
+'''
 
 def dibujarPersonaje(x, y, color, screen, w, h):
-	pygame.draw.rect(screen, color, (x,y,w,h*6))
+	return pygame.draw.rect(screen, color, (x,y,w,h*6))
+
+def dibujarPelota(x, y, color, screen):
+	return pygame.draw.rect(screen, color, (x,y,10,10))
 
 while not gameover:
 	# Recorremos lista de eventos
@@ -71,11 +90,65 @@ while not gameover:
 	# ejecutar acciones
 	y_coord = y_coord + des_y
 	y_opo = y_opo + des_y_opo
+	# acciones de pelota update
+	x_pelota += vel_pelota*direccion_x
+	y_pelota += vel_pelota*direccion_y
 
-	screen.fill(red)
-	dibujarPersonaje(x_coord, y_coord, white, screen, width, height)
-	dibujarPersonaje(x_opo, y_opo, white, screen, width, height)
+	#colisiones
+	#limites del campo
+	#sup-inf
+	if y_pelota > 290: # chocó con la parte de arriba
+		direccion_y *= -1
+	if y_pelota < 0: # chocó con la parte de abajo
+		direccion_y *= -1
+	#der-izq
+	if x_pelota > 390: # choque con derecha
+		# PUNTO PARA IZQ-barrita1
+		score += 1
+		print("SCORE:")
+		print("Barrita 1: " + str(score))
+		print("Barrita 2: " + str(score_opo))
+		x_pelota = 190
+		y_pelota = 150
+		direccion_x *= -1
+		vel_pelota += 0.75
+
+	if x_pelota < 0: #choque con izquierda
+		# PUNTO PARA DER-barrita2
+		score_opo += 1
+		print("SCORE:")
+		print("Barrita 1: " + str(score))
+		print("Barrita 2: " + str(score_opo))
+		x_pelota = 190
+		y_pelota = 150
+		direccion_x *= -1
+		vel_pelota += 0.75
+
+	if score >= 5 or score_opo >= 5:
+		gameover = True
+
+	if y_coord >= 240:
+		y_coord = 240
+	if y_coord <= 0:
+		y_coord = 0
+
+	if y_opo >= 240:
+		y_opo = 240
+	if y_opo <= 0:
+		y_opo = 0
+
+	screen.fill(black)
+	barrita1 = dibujarPersonaje(x_coord, y_coord, white, screen, width, height)
+	barrita2 = dibujarPersonaje(x_opo, y_opo, white, screen, width, height)
+
+	pelota = dibujarPelota(x_pelota, y_pelota, white, screen)
+
+	if barrita1.colliderect(pelota):
+		direccion_x *= -1
+	if barrita2.colliderect(pelota):
+		direccion_x *= -1
+
 	pygame.display.flip()
 	clock.tick(FPS)
-	
+
 pygame.quit()
