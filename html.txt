@@ -6,6 +6,6 @@
 <body>
 	<label>Soy un label</label>
 	<input type="text" name="">
-	<button>soy un button</button>
+	<button>soy un button2</button>
 </body>
 </html>
